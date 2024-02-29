@@ -1,0 +1,46 @@
+def solution(n: str):
+    n_list = n.split()
+    n_res = []
+    for i in n_list:
+        if len(i) == 1 and (not i.isdigit()):
+            num3 = n_res.pop(-1)
+            if i == "*":
+                num2 = n_res.pop(-1)
+                n_res.append(num2 * num3)
+            if i == "+":
+                num2 = n_res.pop(-1)
+                n_res.append(num2 + num3)
+            if i == "-":
+                num2 = n_res.pop(-1)
+                n_res.append(num2 - num3)
+            if i == "/":
+                num2 = n_res.pop(-1)
+                n_res.append(num2 // num3)
+            if i == "~":
+                n_res.append(-num3)
+            if i == "#":
+                n_res.append(num3)
+                n_res.append(num3)
+            if i == "!":
+                vsp = 1
+                for j in range(1, num3 + 1):
+                    vsp *= j
+                n_res.append(vsp)
+            if i == "@":
+                num2 = n_res.pop(-1)
+                num1 = n_res.pop(-1)
+                n_res.append(num2)
+                n_res.append(num3)
+                n_res.append(num1)
+        else:
+            n_res.append(int(i))
+    print(n_res[0])
+
+
+def main():
+    n = input()
+    solution(n)
+
+
+if name == "main":
+    main()
